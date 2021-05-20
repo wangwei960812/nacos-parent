@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.201.124.79:8848
+  #配置导出Span的概率
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://124.70.162.121:9411
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/spring_cloud?serverTimezone=GMT%2B8&useUnicode=true&characterEncodeing=utf-8&useSSL=false&statementInterceptors=brave.mysql.TracingStatementInterceptor&zipkinServiceName=myDatabaseService
+      username: root
+      password: root
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+mybatis:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.nacos.provider.domain.db.entities
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
