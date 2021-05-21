@@ -11,6 +11,7 @@
     <modules>
         <module>nacos-provider</module>
         <module>nacos-consumer</module>
+        <module>dubbo</module>
     </modules>
 
     <properties>
@@ -20,21 +21,45 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <fastjson.version>1.2.61</fastjson.version>
-        <brave-instrumentation-mysql.version>5.4.3</brave-instrumentation-mysql.version>
+        <brave-instrumentation.version>5.4.3</brave-instrumentation.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
         <!-- Sleuth+Zipkin 依赖 -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zipkin -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
+
         <!--zipkin-mysql-->
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave-instrumentation-mysql</artifactId>
-            <version>${brave-instrumentation-mysql.version}</version>
+            <version>${brave-instrumentation.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave-instrumentation-dubbo-rpc -->
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-instrumentation-dubbo-rpc</artifactId>
+            <version>${brave-instrumentation.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>dubbo</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- Feign 依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

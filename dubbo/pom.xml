@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>nacos-parent</artifactId>
+        <groupId>com.alibaba.nacos</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dubbo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dubbo-provider</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-interface</module>
+    </modules>
+
+    <properties>
+        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <dubbo-provider.version>1.0-SNAPSHOT</dubbo-provider.version>
+        <dubbo-consumer.version>1.0-SNAPSHOT</dubbo-consumer.version>
+        <dubbo-interface.version>1.0-SNAPSHOT</dubbo-interface.version>
+        <dubbo-registry-nacos.version>2.6.2</dubbo-registry-nacos.version>
+        <spring-cloud-starter-dubbo.version>0.9.0.RELEASE</spring-cloud-starter-dubbo.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>dubbo-interface</artifactId>
+            <version>${dubbo-interface.version}</version>
+        </dependency>
+        <!--&lt;!&ndash; Dubbo Registry Nacos &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-dubbo</artifactId>-->
+            <!--<version>${spring-cloud-starter-dubbo.version}</version>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-dubbo -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+    </dependencies>
+</project>

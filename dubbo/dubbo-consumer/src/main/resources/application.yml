@@ -1,0 +1,19 @@
+#dubbo配置
+dubbo:
+  scan:
+    base-packages: com.nacos.dubbo
+  registry:
+    address: spring-cloud://127.0.0.1
+  cloud:
+    subscribed-services: dubbo-provider
+  protocol:
+    name: dubbo
+    port: -1
+    id: dubbo
+  provider:
+    timeout: 600000
+    filter: "tracing"
+  consumer:
+    timeout: 600000
+    filter: "tracing"
+
