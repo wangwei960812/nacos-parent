@@ -19,6 +19,9 @@ server:
 logging:
   level:
     root: info
+    com.nacos.consumer.service: debug
+    com.netflix.loadbalancer: debug
+    com.alibaba.cloud.nacos.ribbon: debug
 
 management:
   endpoints:

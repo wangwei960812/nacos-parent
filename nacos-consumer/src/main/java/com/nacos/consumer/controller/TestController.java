@@ -1,5 +1,6 @@
 package com.nacos.consumer.controller;
 
+import com.nacos.consumer.service.DubboFeignService;
 import com.nacos.consumer.service.FeignService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class TestController {
 
     @Resource
     private FeignService feignService;
+
+    @Resource
+    private DubboFeignService dubboFeignService;
 
     @Autowired
     public TestController(RestTemplate restTemplate) {
@@ -40,4 +44,13 @@ public class TestController {
         log.info("fileName:{}", fileName);
         return feignService.getFilePath(fileName);
     }
+
+    @GetMapping(value = "/dubbo/feign/{str}")
+    public String getDubboEcho(@PathVariable("str") String str) {
+        log.info("str:{}", str);
+        feignService.getFilePath(str);
+        return dubboFeignService.echo(str);
+    }
+
+
 }
